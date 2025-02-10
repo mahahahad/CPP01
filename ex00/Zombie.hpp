@@ -20,9 +20,13 @@ using std::cout;
 
 class Zombie {
     public:
-        void    announce( void );
         Zombie(string name);
-    
-    private:
+        ~Zombie();
+        void    announce( void );
+        
+        private:
         string  name;
-};
+    };
+    
+Zombie* newZombie( string name );
+void    randomChump( string name );

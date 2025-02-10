@@ -9,7 +9,7 @@ else
 	CXXFLAGS += -std=gnu++98
 endif
 
-SRCS := Zombie.cpp main.cpp
+SRCS := Zombie.cpp randomChump.cpp newZombie.cpp main.cpp
 
 OBJS_DIR := objects
 OBJS := $(addprefix $(OBJS_DIR)/, $(SRCS:.cpp=.o))

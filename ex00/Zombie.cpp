@@ -19,3 +19,7 @@ Zombie::Zombie(string zombieName) {
 void Zombie::announce(void) {
     cout << name << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }
+
+Zombie::~Zombie(void) {
+    cout << name << ": Destroyed" << std::endl;
+}
