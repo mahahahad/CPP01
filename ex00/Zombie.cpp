@@ -6,15 +6,14 @@
 /*   By: maabdull <maabdull@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 21:43:48 by maabdull          #+#    #+#             */
-/*   Updated: 2025/02/10 21:43:48 by maabdull         ###   ########.fr       */
+/*   Updated: 2025/02/11 11:43:50 by maabdull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-Zombie::Zombie(string zombieName) {
-    name = zombieName;
-}
+Zombie::Zombie(string zombieName)
+    : name(zombieName) {}
 
 void Zombie::announce(void) {
     cout << name << ": BraiiiiiiinnnzzzZ..." << std::endl;
