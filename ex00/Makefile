@@ -36,3 +36,8 @@ fclean: clean
 	rm -rf $(NAME) $(NAME).exe
 
 re: fclean all
+
+debug: CXXFLAGS += -g -fsanitize=address
+debug: re
+
+.PHONY: all clean fclean re debug
