@@ -56,7 +56,7 @@ int	main(int argc, char *argv[]) {
 		// Read the file line by line until the end
 		while (getline(fileToRead, line)) {
             size_t  findIndex = 0;
-            while ((findIndex = line.find(argv[2], findIndex)) != string::npos) {
+            while ((findIndex = line.find(argv[2])) != string::npos) {
                 line = line.substr(0, findIndex) + argv[3] + line.substr(findIndex + strlen(argv[2]));
                 findIndex += strlen(argv[3]);
             }
