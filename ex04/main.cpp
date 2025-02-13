@@ -56,10 +56,12 @@ int	main(int argc, char *argv[]) {
 		// Read the file line by line until the end
 		while (getline(fileToRead, line)) {
             size_t  findIndex = 0;
+            // Keep looping till the line contains an instance of the target string
             while ((findIndex = line.find(argv[2])) != string::npos) {
+                // Replace the line in place with the target string replaced with the replacement string
                 line = line.substr(0, findIndex) + argv[3] + line.substr(findIndex + strlen(argv[2]));
-                findIndex += strlen(argv[3]);
             }
+            // Write the replaced line to the output file
             fileToOutput << line << "\n";
 		}
 	}
