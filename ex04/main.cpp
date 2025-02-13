@@ -35,6 +35,16 @@ int	main(int argc, char *argv[]) {
 		return (1);
 	}
 
+    if (strlen(argv[2]) == 0) {
+        cout << "The target string is invalid.\n";
+        return (1);
+    }
+
+    if (strlen(argv[3]) == 0) {
+        cout << "The replacement string is invalid.\n";
+        return (1);
+    }
+
 	// Proceed only if the file is open
 	if (fileToRead.is_open()) {
 		string	line;
@@ -45,24 +55,12 @@ int	main(int argc, char *argv[]) {
 
 		// Read the file line by line until the end
 		while (getline(fileToRead, line)) {
-			size_t	findIndex = line.find(argv[2]);
-			if (findIndex == string::npos) {
-				cout << "No instance of string \"" << argv[2] << "\" was found in the line \"" << line << "\"" << std::endl;
-				fileToOutput << line << "\n";
-			} else {
-				cout << "String match found at index " << findIndex << std::endl;
-                cout << line << std::endl;
-				// Write the line into the new file until the starting point of the word to replace
-                cout << line.substr(0, findIndex);
-				fileToOutput << line.substr(0, findIndex);
-				// Write the replacement word
-				cout << argv[3];
-				fileToOutput << argv[3];
-                cout << "Finished writing replacement string";
-				// Write the remaining part of the line
-				cout << line.substr(findIndex + strlen(argv[2])) << "\n";
-				fileToOutput << line.substr(findIndex + strlen(argv[2])) << "\n";
-			}
+            size_t  findIndex = 0;
+            while ((findIndex = line.find(argv[2], findIndex)) != string::npos) {
+                line = line.substr(0, findIndex) + argv[3] + line.substr(findIndex + strlen(argv[2]));
+                findIndex += strlen(argv[3]);
+            }
+            fileToOutput << line << "\n";
 		}
 	}
 	return (0);
