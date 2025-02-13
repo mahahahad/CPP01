@@ -13,6 +13,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <cstring>
 
 using std::cout;
 using std::string;
@@ -39,22 +40,28 @@ int	main(int argc, char *argv[]) {
 		string	line;
 		string	ext = argv[1];
 		ext.append(".replace");
-		std::ofstream fileToOutput(ext);
+		std::ofstream fileToOutput;
+        fileToOutput.open(ext.c_str());
 
 		// Read the file line by line until the end
 		while (getline(fileToRead, line)) {
 			size_t	findIndex = line.find(argv[2]);
 			if (findIndex == string::npos) {
-				cout << "No instance of string " << argv[2] << " was found in the line " << line << std::endl;
+				cout << "No instance of string \"" << argv[2] << "\" was found in the line \"" << line << "\"" << std::endl;
 				fileToOutput << line << "\n";
 			} else {
 				cout << "String match found at index " << findIndex << std::endl;
+                cout << line << std::endl;
 				// Write the line into the new file until the starting point of the word to replace
+                cout << line.substr(0, findIndex);
 				fileToOutput << line.substr(0, findIndex);
 				// Write the replacement word
+				cout << argv[3];
 				fileToOutput << argv[3];
+                cout << "Finished writing replacement string";
 				// Write the remaining part of the line
-				fileToOutput << line.substr(strlen(argv[2])) << "\n";
+				cout << line.substr(findIndex + strlen(argv[2])) << "\n";
+				fileToOutput << line.substr(findIndex + strlen(argv[2])) << "\n";
 			}
 		}
 	}
