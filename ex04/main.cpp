@@ -15,6 +15,9 @@
 #include <string>
 #include <cstring>
 
+#define RESET "\033[0m"
+#define RED "\033[31m"
+
 using std::cout;
 using std::string;
 using std::getline;
@@ -23,7 +26,8 @@ using std::getline;
 int	main(int argc, char *argv[]) {
 	// Check if 3 arguments have been provided
 	if (argc != 4) {
-		cout << "Please provide 3 arguments.\n";
+		cout << RED "Error: " RESET "Insufficient Arguments\n";
+        cout << "Usage: " << argv[0] << " <filename> <string_to_find> <string_to_replace_with>\n";
 		return (1);
 	}
 	// Create an input file stream with the filename provided
@@ -31,18 +35,29 @@ int	main(int argc, char *argv[]) {
 
 	// Check if the file exists and is without issues
 	if (!fileToRead.good()) {
-		cout << "The file is invalid.\n";
+		cout << RED "Error: " RESET "The file is invalid.\n";
 		return (1);
 	}
 
     if (strlen(argv[2]) == 0) {
-        cout << "The target string is invalid.\n";
+        cout << RED "Error: " RESET "The target string is invalid.\n";
         return (1);
     }
 
     if (strlen(argv[3]) == 0) {
-        cout << "The replacement string is invalid.\n";
+        cout << RED "Error: " RESET "The replacement string is invalid.\n";
         return (1);
+    }
+
+    if (string(argv[2]) == string(argv[3])) {
+        std::ofstream   outputFile;
+        string          line;
+
+        outputFile.open(string(argv[1]).append(".replace").c_str());
+        while (getline(fileToRead, line)) {
+            outputFile << line << "\n";
+        }
+        return (0);
     }
 
 	// Proceed only if the file is open
