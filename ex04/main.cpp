@@ -31,10 +31,10 @@ int	main(int argc, char *argv[]) {
 		return (1);
 	}
 	// Create an input file stream with the filename provided
-	std::ifstream	fileToRead(argv[1]);
+	std::ifstream	inputFile(argv[1]);
 
 	// Check if the file exists and is without issues
-	if (!fileToRead.good()) {
+	if (!inputFile.good()) {
 		cout << RED "Error: " RESET "The file is invalid.\n";
 		return (1);
 	}
@@ -54,22 +54,22 @@ int	main(int argc, char *argv[]) {
         string          line;
 
         outputFile.open(string(argv[1]).append(".replace").c_str());
-        while (getline(fileToRead, line)) {
+        while (getline(inputFile, line)) {
             outputFile << line << "\n";
         }
         return (0);
     }
 
 	// Proceed only if the file is open
-	if (fileToRead.is_open()) {
+	if (inputFile.is_open()) {
 		string	line;
 		string	ext = argv[1];
 		ext.append(".replace");
-		std::ofstream fileToOutput;
-        fileToOutput.open(ext.c_str());
+		std::ofstream outputFile;
+        outputFile.open(ext.c_str());
 
 		// Read the file line by line until the end
-		while (getline(fileToRead, line)) {
+		while (getline(inputFile, line)) {
             size_t  findIndex = 0;
             // Keep looping till the line contains an instance of the target string
             while ((findIndex = line.find(argv[2])) != string::npos) {
@@ -77,7 +77,7 @@ int	main(int argc, char *argv[]) {
                 line = line.substr(0, findIndex) + argv[3] + line.substr(findIndex + strlen(argv[2]));
             }
             // Write the replaced line to the output file
-            fileToOutput << line << "\n";
+            outputFile << line << "\n";
 		}
 	}
 	return (0);
