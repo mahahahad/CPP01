@@ -49,35 +49,29 @@ int	main(int argc, char *argv[]) {
         return (1);
     }
 
-    if (string(argv[2]) == string(argv[3])) {
-        std::ofstream   outputFile;
-        string          line;
-
-        outputFile.open(string(argv[1]).append(".replace").c_str());
-        while (getline(inputFile, line)) {
-            outputFile << line << "\n";
-        }
-        return (0);
-    }
-
 	// Proceed only if the file is open
 	if (inputFile.is_open()) {
 		string	line;
-		string	ext = argv[1];
-		ext.append(".replace");
 		std::ofstream outputFile;
-        outputFile.open(ext.c_str());
+        outputFile.open(string(argv[1]).append(".replace").c_str());
 
 		// Read the file line by line until the end
 		while (getline(inputFile, line)) {
             size_t  findIndex = 0;
             // Keep looping till the line contains an instance of the target string
-            while ((findIndex = line.find(argv[2])) != string::npos) {
+            while ((findIndex = line.find(argv[2], findIndex)) != string::npos) {
                 // Replace the line in place with the target string replaced with the replacement string
                 line = line.substr(0, findIndex) + argv[3] + line.substr(findIndex + strlen(argv[2]));
+                // Update findIndex so next time it finds starting from the end of replacement
+                findIndex += strlen(argv[3]);
             }
             // Write the replaced line to the output file
-            outputFile << line << "\n";
+            // Replace the newline character at the end with the replacement character if the target is a newline character
+            if (argv[2][0] == '\n') {
+                outputFile << line << argv[3];
+            } else {
+                outputFile << line << "\n";
+            }
 		}
 	}
 	return (0);
