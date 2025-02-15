@@ -6,11 +6,13 @@
 /*   By: maabdull <maabdull@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:22:46 by maabdull          #+#    #+#             */
-/*   Updated: 2025/02/11 20:34:19 by maabdull         ###   ########.fr       */
+/*   Updated: 2025/02/15 12:31:27 by maabdull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
+#ifndef HUMAN_B_HPP
+#define HUMAN_B_HPP
 
 #include "Weapon.hpp"
 
@@ -23,3 +25,5 @@ class HumanB {
         string  name;
         Weapon  *weapon;
 };
+
+#endif

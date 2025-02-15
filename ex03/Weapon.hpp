@@ -6,11 +6,12 @@
 /*   By: maabdull <maabdull@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:21:51 by maabdull          #+#    #+#             */
-/*   Updated: 2025/02/11 20:20:48 by maabdull         ###   ########.fr       */
+/*   Updated: 2025/02/15 12:32:03 by maabdull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
+#ifndef WEAPON_HPP
 
 #include <string>
 #include <iostream>
@@ -27,3 +28,5 @@ class Weapon {
     private:
         string          type;
 };
+
+#endif
