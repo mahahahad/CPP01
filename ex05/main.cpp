@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: maabdull <maabdull@student.42abudhabi.a    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/12 17:04:36 by maabdull          #+#    #+#             */
-/*   Updated: 2025/02/15 12:08:00 by maabdull         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "Harl.hpp"
 
 int	main(void) {
@@ -19,6 +7,6 @@ int	main(void) {
 	harl.complain("INFO");
 	harl.complain("WARNING");
 	harl.complain("ERROR");
-	harl.complain("");
+	harl.complain("buhvjthgb");
 	return (0);
 }
