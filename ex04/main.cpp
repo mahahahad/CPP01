@@ -12,20 +12,20 @@ using std::getline;
 
 // Expected input: <filename> <s1> <s2>
 int	main(int argc, char *argv[]) {
-	// Check if 3 arguments have been provided
-	if (argc != 4) {
-		cout << RED "Error: " RESET "Insufficient Arguments\n";
+    // Check if 3 arguments have been provided
+    if (argc != 4) {
+        cout << RED "Error: " RESET "Insufficient Arguments\n";
         cout << "Usage: " << argv[0] << " <filename> <string_to_find> <string_to_replace_with>\n";
-		return (1);
-	}
-	// Create an input file stream with the filename provided
-	std::ifstream	inputFile(argv[1]);
+        return (1);
+    }
+    // Create an input file stream with the filename provided
+    std::ifstream	inputFile(argv[1]);
 
-	// Check if the file exists and is without issues
-	if (!inputFile.good()) {
-		cout << RED "Error: " RESET "The file is invalid.\n";
-		return (1);
-	}
+    // Check if the file exists and is without issues
+    if (!inputFile.good()) {
+        cout << RED "Error: " RESET "The file is invalid.\n";
+        return (1);
+    }
 
     if (strlen(argv[2]) == 0) {
         cout << RED "Error: " RESET "The target string is invalid.\n";
@@ -37,14 +37,14 @@ int	main(int argc, char *argv[]) {
         return (1);
     }
 
-	// Proceed only if the file is open
-	if (inputFile.is_open()) {
-		string	line;
-		std::ofstream outputFile;
+    // Proceed only if the file is open
+    if (inputFile.is_open()) {
+        string	line;
+        std::ofstream outputFile;
         outputFile.open(string(argv[1]).append(".replace").c_str());
 
-		// Read the file line by line until the end
-		while (getline(inputFile, line)) {
+        // Read the file line by line until the end
+        while (getline(inputFile, line)) {
             size_t  findIndex = 0;
             // Keep looping till the line contains an instance of the target string
             while ((findIndex = line.find(argv[2], findIndex)) != string::npos) {
@@ -60,7 +60,7 @@ int	main(int argc, char *argv[]) {
             } else {
                 outputFile << line << "\n";
             }
-		}
-	}
-	return (0);
+        }
+    }
+    return (0);
 }
