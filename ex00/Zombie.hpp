@@ -14,7 +14,7 @@ class Zombie {
         ~Zombie();
         void    announce( void );
 
-        private:
+    private:
         string  name;
     };
 
