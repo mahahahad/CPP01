@@ -1,0 +1,4 @@
+**/objects
+**/*.o
+**/*.exe
+**/main
