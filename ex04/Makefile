@@ -24,7 +24,7 @@ clean:
 	rm -rf $(OBJS_DIR)
 
 fclean: clean
-	rm -rf $(NAME) $(NAME).exe
+	rm -rf $(NAME) $(NAME).exe *.replace
 
 re: fclean all
 
