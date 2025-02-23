@@ -1,6 +1,5 @@
 CXX := c++
 CXXFLAGS := -Wall -Werror -Wextra -std=c++98
-OS := $(shell uname)
 
 SRCS := Zombie.cpp randomChump.cpp newZombie.cpp main.cpp
 OBJS_DIR := objects
