@@ -9,5 +9,5 @@ int main(void) {
     zombie2->announce();
     cout << "Zombie2 must be manually deleted because it was created on the heap." << std::endl;
     delete zombie2;
-	return (0);
+    return (0);
 }
